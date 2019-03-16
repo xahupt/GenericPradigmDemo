@@ -5,6 +5,7 @@ import com.percy.util.*;
 import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Stream;
 
 /**
  * @author percy
@@ -72,11 +73,15 @@ public class TestDemo {
         linkedList.displayAllNodes();
         System.out.println("-------------双向链表----------------------------");
         MyLinkedList_0 linkedList_0 = new MyLinkedList_0();
-        for (int i = 0; i < 10000; i++) {
+        for (int i = 0; i < 1000; i++) {
             linkedList_0.addNode(new MyLinkedList_0.Node(i));
         }
         linkedList_0.displayAllNodes();
-        linkedList_0.deleteNodes(new MyLinkedList_0.Node[]{new MyLinkedList_0.Node(2)});
+        System.out.println("删除节点");
+        for (int i = 0; i <501 ; i++) {
+
+            System.out.println(linkedList_0.deleteNodes(new MyLinkedList_0.Node(i*2)));
+        }
         linkedList_0.displayAllNodes();
     }
 }

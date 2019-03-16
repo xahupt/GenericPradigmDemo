@@ -1,5 +1,7 @@
 package com.percy.util;
 
+import java.awt.*;
+
 /**
  * @author percy
  * @create 2019-03-16  上午8:59
@@ -8,10 +10,11 @@ package com.percy.util;
 public class MyLinkedList_0<T> {
     /**
      * 定义泛型内部类
+     *
      * @param <U>
      */
-    public static class Node<U>{
-        private Node pre,next;//指针
+    public static class Node<U> {
+        private Node pre, next;//指针
         private U data;//数据区
 
         public Node(U data) {
@@ -24,11 +27,12 @@ public class MyLinkedList_0<T> {
             this.data = null;
         }
 
-        public void displayNode(){
-            System.out.print(data+" ");
+        public void displayNode() {
+            System.out.print(data + " ");
         }
     }
-    private Node<T> head,last;
+
+    private Node<T> head, last;
     private int size;
 
     public MyLinkedList_0() {
@@ -36,51 +40,70 @@ public class MyLinkedList_0<T> {
         last = null;
         size = 0;
     }
-    public int addNode(Node<T> node){
-        if (size==0){
+
+    public int addNode(Node<T> node) {
+        if (size == 0) {
             head = node;
             last = node;
         }
         last.next = node;
         node.pre = last;
         last = node;
-        if (head==last){
+        if (head == last) {
             node.pre = null;
         }
 
         size++;
         return 1;
     }
-    public int deleteNodes(Node<T>... node){
+
+    public int deleteNodes(Node<T> node) {
         Node<T>[] nodes = null;
         Node<T> Var1 = head;
-        int Var2=0;
-        while (Var1!=null){
-            for (Node<T> tNode : node) {
-                if (tNode.data==Var1.data){
+        int Var2 = 0;
+        while (Var1 != null) {
+
+            if (node.data .equals( Var1.data)) {
+                if (Var1.pre == null) {
+                    head = Var1.next;
+                    Var1.next.pre = null;
+                } else if (Var1.next == null) {
+                    last = Var1.pre;
+                    Var1.pre.next = null;
+                } else {
                     Var1.pre.next = Var1.next;
                     Var1.next.pre = Var1.pre;
-                    Var2++;
+                    Var1.data = null;
                 }
+
+                Var2++;
             }
-            Var1=Var1.next;
+//            if (Var1.data==null)
+//            {
+//                Var1 = Var1.next.next;
+//            }else{
+
+                Var1 = Var1.next;
+//            }
         }
         return Var2;
     }
-    public int displayAllNodes(){
+
+    public int displayAllNodes() {
         System.out.println("正序输出");
         Node pos = head;
-        while (pos!=null){
+        while (pos != null) {
             pos.displayNode();
-            pos=pos.next;
+            pos = pos.next;
         }
         System.out.println();
         System.out.println("倒序输出");
         pos = last;
-        while (pos!=null){
+        while (pos != null) {
             pos.displayNode();
-            pos=pos.pre;
+            pos = pos.pre;
         }
+        System.out.println();
         return size;
     }
 }
