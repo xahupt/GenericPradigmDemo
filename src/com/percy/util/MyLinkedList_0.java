@@ -62,7 +62,7 @@ public class MyLinkedList_0<T> {
         Node<T> Var1 = head;
         int Var2 = 0;
         while (Var1 != null) {
-
+            //这里不能用==
             if (node.data .equals( Var1.data)) {
                 if (Var1.pre == null) {
                     head = Var1.next;
