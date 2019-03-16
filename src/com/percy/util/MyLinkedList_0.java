@@ -1,7 +1,5 @@
 package com.percy.util;
 
-import java.awt.*;
-
 /**
  * @author percy
  * @create 2019-03-16  上午8:59
